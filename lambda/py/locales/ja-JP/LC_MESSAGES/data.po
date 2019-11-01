@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2019-10-15 18:41-0400\n"
+"PO-Revision-Date: 2019-10-16 16:18-0400\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.2.4\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ja_JP\n"
+
+#: data.py:3
+msgid "Sauce Boss"
+msgstr "ソースボス"
+
+#: data.py:4
+msgid "Welcome to {}"
+msgstr "ようこそ{}へ"
+
+#: data.py:5
+msgid "HOW TO MAKE {} SAUCE"
+msgstr "{}ソースの作り方"
+
+#: data.py:6
+msgid "HELP"
+msgstr "ヘルプ"
+
+#: data.py:7
+msgid "Select the sauce you want to prepare"
+msgstr "作りたいソースを選んでください。"
+
+#: data.py:8
+msgid ""
+"Welcome to {}. You can ask a question like, what's the recipe for {} "
+"sauce? ... Now, which sauce would you like to prepare?"
+msgstr ""
+"{}へようこそ。「{}の作り方を教えて。」のように聞くことができます。きょうはど"
+"んなソースを作りたいですか？"
+
+#: data.py:10
+msgid ""
+"For instructions on what you can say, please say help me. Which sauce would "
+"you like to prepare?"
+msgstr ""
+"使い方を知りたい場合は、「ヘルプ」と言ってください。きょうはどんなソースを作"
+"りたいですか？"
+
+#: data.py:12
+msgid "{} - Recipe for {}"
+msgstr "{} - {}のレシピ"
+
+#: data.py:13
+msgid ""
+"You can ask questions such as, what's the recipe for {}, or, you can say "
+"exit ... Now, which sauce would you like to prepare?"
+msgstr ""
+"{}の作り方を教えて。」のように聞くことができます。終わりたい場合は「終了。」"
+"と言ってください。きょうはどんなソースを作りたいですか？"
+
+#: data.py:15
+msgid ""
+"You can say things like, what's the recipe for {}, or you can say ... Now, "
+"which sauce would you like to prepare?"
+msgstr ""
+"「{}の作り方を教えて。」のように聞くことができます。終わりたい場合は「終"
+"了。」と言ってください。きょうはどんなソースを作りたいですか？"
+
+#: data.py:17
+msgid "Goodbye!"
+msgstr "さようなら!"
+
+#: data.py:18
+msgid "Try saying repeat"
+msgstr "リピートと言ってみて。"
+
+#: data.py:19
+msgid ""
+"I'm sorry, I currently do not know the recipe for {}. Which sauce would you "
+"like to prepare?"
+msgstr ""
+"ごめんなさい。{}ソースの作り方は知りません。他にどんなソースを作りたいです"
+"か？"
+
+#: data.py:21
+msgid ""
+"I'm sorry, I currently do not know that recipe. Which sauce would you like "
+"to prepare?"
+msgstr ""
+"ごめんなさい。そのソースの作り方は知りません。他にどんなソースを作りたいです"
+"か？"
+
+#: data.py:23
+msgid "Which sauce would you like to prepare?"
+msgstr "他にどんなソースを作りたいですか？"
+
+#: data.py:24
+msgid "I'm sorry I didn't catch that. Can you reformulate please?"
+msgstr "すみません。うまく理解できませんでした。もう一度言ってみてください。"
+
+#: data.py:25
+msgid "How do I make {} sauce?"
+msgstr "{}ソースの作り方を教えて?"
+
+#: data.py:26
+msgid "You just triggered {}"
+msgstr "You just triggered {}"

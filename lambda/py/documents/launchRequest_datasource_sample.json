@@ -1,0 +1,314 @@
+{
+  "type": "APL",
+  "version": "1.1",
+  "import": [
+    {
+      "name": "alexa-viewport-profiles",
+      "version": "1.1.0"
+    },
+    {
+      "name": "alexa-layouts",
+      "version": "1.1.0"
+    },
+    {
+      "name": "alexa-styles",
+      "version": "1.1.0"
+    }
+  ],
+  "resources": [
+    {
+      "description": "Define dimensions for HorizontalListItem layout",
+      "dimensions": {
+        "touchWrapperWidth": "auto",
+        "touchWrapperHeight": "auto",
+        "containerWidth": "25vw",
+        "containerHeight": "30vh",
+        "imageWidth": "22vh",
+        "imageHeight": "22vh",
+        "imageBorderRadius": "22vh",
+        "textWidth": "25vw",
+        "textHeight": "8vh",
+        "textPaddingTop": "2vh",
+        "textFontSize": "2vw",
+        "textFontWeight": "100"
+      }
+    },
+    {
+      "description": "Override dimensions for HorizontalListItem layout on Small Round Hubs",
+      "when": "${@viewportProfile == @hubRoundSmall}",
+      "dimensions": {
+        "touchWrapperWidth": "60vw",
+        "touchWrapperHeight": "70vh",
+        "containerWidth": "50vw",
+        "containerHeight": "70vh",
+        "imageWidth": "50vw",
+        "imageHeight": "50vh",
+        "imageBorderRadius": "5vh",
+        "textWidth": "50vw",
+        "textHeight": "20vh",
+        "textPaddingTop": "3vh",
+        "textFontSize": "5vw"
+      }
+    },
+    {
+      "description": "Background Image for Launch Screen on Small Round Hubs",
+      "when": "${@viewportProfile == @hubRoundSmall}",
+      "strings": {
+        "backgroundImg": "https://s3.amazonaws.com/ask-samples-resources/images/sauce-boss/sauceBoss-background-right-smHub.png"
+      }
+    },
+    {
+      "description": "Background Image for Launch Screen on Landscape Hubs",
+      "when": "${@viewportProfile == @hubLandscapeSmall || @viewportProfile == @hubLandscapeMedium || @viewportProfile == @hubLandscapeLarge}",
+      "strings": {
+        "backgroundImg": "https://s3.amazonaws.com/ask-samples-resources/images/sauce-boss/sauceBoss-background-right-Hub.png"
+      }
+    },
+    {
+      "description": "Background Image for Launch Screen on XLarge Hubs (e.g TV)",
+      "when": "${@viewportProfile == @tvLandscapeXLarge}",
+      "strings": {
+        "backgroundImg": "https://s3.amazonaws.com/ask-samples-resources/images/sauce-boss/sauceBoss-background-right-TV.png"
+      }
+    },
+    {
+      "description": "Skill Icon",
+      "strings": {
+        "skillIcon": "https://s3.amazonaws.com/ask-samples-resources/icons/sauce-boss-icon.png"
+      }
+    }
+  ],
+  "layouts": {
+    "HorizontalListItem": {
+      "description": "a touchable container with an image and a text - dimensions are adapted depending on Hub type",
+      "item": {
+        "type": "TouchWrapper",
+        "id": "touch-${data.id}",
+        "width": "@touchWrapperWidth",
+        "height": "@touchWrapperHeight",
+        "item": {
+          "type": "Container",
+          "direction": "column",
+          "width": "@containerWidth",
+          "height": "@containerHeight",
+          "alignItems": "center",
+          "items": [
+            {
+              "type": "Image",
+              "source": "${data.image}",
+              "width": "@imageWidth",
+              "height": "@imageHeight",
+              "borderRadius": "@imageBorderRadius",
+              "scale": "best-fill",
+              "opacity": "${environment.aplVersion == '1.1' ? 0 : 1}",
+              "onMount": [
+                {
+                  "when": "${environment.aplVersion == '1.1'}",
+                  "type": "AnimateItem",
+                  "easing": "ease-in-out",
+                  "duration": 1000,
+                  "value": [
+                    {
+                      "property": "opacity",
+                      "to": 1
+                    },
+                    {
+                      "property": "transform",
+                      "duration": 4000,
+                      "from": [
+                        {
+                          "translateX": "50"
+                        },
+                        {
+                          "rotate": 90
+                        }
+                      ],
+                      "to": [
+                        {
+                          "translateX": 0
+                        },
+                        {
+                          "rotate": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "text": "${ordinal? ordinal + '.' : ''} ${data.text}",
+              "width": "@textWidth",
+              "height": "@textHeight",
+              "paddingTop": "@textPaddingTop",
+              "fontSize": "@textFontSize",
+              "fontWeight": "@textFontWeight",
+              "textAlign": "center",
+              "opacity": "${environment.aplVersion == '1.1' ? 0 : 1}",
+              "onMount": [
+                {
+                  "when": "${environment.aplVersion == '1.1'}",
+                  "type": "AnimateItem",
+                  "duration": 2000,
+                  "value": {
+                    "property": "opacity",
+                    "to": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "onPress": [
+          {
+            "when": "${environment.aplVersion == '1.1'}",
+            "type": "AnimateItem",
+            "easing": "ease-in-out",
+            "duration": 1000,
+            "value": [
+              {
+                "property": "transform",
+                "from": [
+                  {
+                    "translateX": 0
+                  },
+                  {
+                    "scale": 1
+                  }
+                ],
+                "to": [
+                  {
+                    "translateX": 0
+                  },
+                  {
+                    "scale": 1.6
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "SendEvent",
+            "arguments": [
+              "sauceInstructions",
+              "${data.id}"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": [
+      {
+        "type": "Container",
+        "items": [
+          {
+            "description": "Set background Image",
+            "type": "AlexaBackground",
+            "backgroundImageSource": "@backgroundImg"
+          },
+          {
+            "description": "Use Responsive Header accross all Hubs",
+            "type": "AlexaHeader",
+            "headerTitle": "${payload.sauceBossData.properties.headerTitle}",
+            "headerAttributionImage": "@skillIcon",
+            "headerDivider": true
+          },
+          {
+            "description": "Use a sequence to display a horizontal scrolling list of sauces for Small Round Hubs",
+            "when": "${@viewportProfile == @hubRoundSmall}",
+            "type": "Container",
+            "height": "100vh",
+            "width": "100vw",
+            "items": [
+              {
+                "type": "Sequence",
+                "scrollDirection": "horizontal",
+                "data": "${payload.sauceBossData.properties.items}",
+                "width": "100vw",
+                "height": "100vh",
+                "firstItem": [
+                  {
+                    "type": "Container",
+                    "width": "25vw"
+                  }
+                ],
+                "lastItem": [
+                  {
+                    "type": "Container",
+                    "width": "15vw"
+                  }
+                ],
+                "numbered": true,
+                "item": [
+                  {
+                    "type": "HorizontalListItem"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Use containers to display 4 sauces per row (container) for Landscape Hubs",
+            "when": "${@viewportProfile != @hubRoundSmall}",
+            "type": "Container",
+            "height": "70vh",
+            "width": "100vw",
+            "direction": "column",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "items": [
+              {
+                "type": "Container",
+                "width": "100vw",
+                "height": "35vh",
+                "paddingTop": "5vh",
+                "direction": "row",
+                "data": [
+                  "${payload.sauceBossData.properties.items[0]}",
+                  "${payload.sauceBossData.properties.items[1]}",
+                  "${payload.sauceBossData.properties.items[2]}",
+                  "${payload.sauceBossData.properties.items[3]}"
+                ],
+                "items": [
+                  {
+                    "type": "HorizontalListItem"
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "width": "100vw",
+                "height": "35vh",
+                "paddingTop": "5vh",
+                "direction": "row",
+                "data": [
+                  "${payload.sauceBossData.properties.items[4]}",
+                  "${payload.sauceBossData.properties.items[5]}",
+                  "${payload.sauceBossData.properties.items[6]}",
+                  "${payload.sauceBossData.properties.items[7]}"
+                ],
+                "items": [
+                  {
+                    "type": "HorizontalListItem"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Use Responsive Footer accross all Landscape Hubs",
+            "when": "${@viewportProfile != @hubRoundSmall && @viewportProfile != @hubLandscapeSmall}",
+            "type": "AlexaFooter",
+            "hintText": "${payload.sauceBossData.properties.hintText}"
+          }
+        ]
+      }
+    ]
+  }
+}

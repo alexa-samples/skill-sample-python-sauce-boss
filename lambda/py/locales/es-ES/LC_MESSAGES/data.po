@@ -1,0 +1,108 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2019-10-15 18:41-0400\n"
+"PO-Revision-Date: 2019-10-15 18:59-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data.py:3
+msgid "Sauce Boss"
+msgstr "Rey de la Salsa"
+
+#: data.py:4
+msgid "Welcome to {}"
+msgstr "Bienvenidos al {}"
+
+#: data.py:5
+msgid "HOW TO MAKE {} SAUCE"
+msgstr "COMO HACER SALSA {}"
+
+#: data.py:6
+msgid "HELP"
+msgstr "AYUDA"
+
+#: data.py:7
+msgid "Select the sauce you want to prepare"
+msgstr "Selecciona la salsa que quieres cocinar"
+
+#: data.py:8
+msgid ""
+"Welcome to {}. You can ask a question like, what's the recipe for {} "
+"sauce? ... Now, which sauce would you like to prepare?"
+msgstr ""
+"Bienvenidos al {}. Puedes hacerme una pregunta como, “Cuál es la receta de "
+"la salsa {}?” … Bien, qué salsa quieres cocinar?"
+
+#: data.py:10
+msgid ""
+"For instructions on what you can say, please say help me. Which sauce would "
+"you like to prepare?"
+msgstr ""
+"Si necesitas entender qué puedes hacer con la skill, di ayuda. Qué salsa "
+"quieres cocinar?"
+
+#: data.py:12
+msgid "{} - Recipe for {}"
+msgstr "{} - Receta de {}"
+
+#: data.py:13
+msgid ""
+"You can ask questions such as, what's the recipe for {}, or, you can say "
+"exit ... Now, which sauce would you like to prepare?"
+msgstr ""
+"Puedes preguntar cosas como, “cuál es la receta de la salsa {}?”, o, puedes "
+"decir salir … Qué salsa quieres cocinar?"
+
+#: data.py:15
+msgid ""
+"You can say things like, what's the recipe for {}, or you can say ... Now, "
+"which sauce would you like to prepare?"
+msgstr ""
+"Puedes decirme cosas como por ejemplo, “cuál es la receta de la salsa {}?”, "
+"o, puedes decir salir … Qué salsa quieres cocinar?"
+
+#: data.py:17
+msgid "Goodbye!"
+msgstr "Hasta luego!"
+
+#: data.py:18
+msgid "Try saying repeat"
+msgstr "Intenta decir Repite."
+
+#: data.py:19
+msgid ""
+"I'm sorry, I currently do not know the recipe for {}. Which sauce would you "
+"like to prepare?"
+msgstr ""
+"Lo siento, ahora mismo no conozco la receta de {}. Qué salsa quieres "
+"cocinar?"
+
+#: data.py:21
+msgid ""
+"I'm sorry, I currently do not know that recipe. Which sauce would you like "
+"to prepare?"
+msgstr "Lo siento, aun no conozco esa receta. Qué salsa quieres cocinar?"
+
+#: data.py:23
+msgid "Which sauce would you like to prepare?"
+msgstr "Qué salsa quieres cocinar?"
+
+#: data.py:24
+msgid "I'm sorry I didn't catch that. Can you reformulate please?"
+msgstr "No se que ha pasado. Por favor inténtalo otra vez."
+
+#: data.py:25
+msgid "How do I make {} sauce?"
+msgstr "Cómo puedo elaborar salsa {}?"
+
+#: data.py:26
+msgid "You just triggered {}"
+msgstr "Acabas de activar {}"

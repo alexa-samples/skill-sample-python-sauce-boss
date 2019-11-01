@@ -1,0 +1,71 @@
+{
+  "type": "APL",
+  "version": "1.1",
+  "import": [
+    {
+      "name": "alexa-viewport-profiles",
+      "version": "1.1.0"
+    },
+    {
+      "name": "alexa-layouts",
+      "version": "1.1.0"
+    }
+  ],
+  "resources": [
+    {
+      "description": "Background Image for Help Screen on Small Round Hubs",
+      "when": "${@viewportProfile == @hubRoundSmall}",
+      "strings": {
+        "backgroundImg": "https://s3.amazonaws.com/ask-samples-resources/images/sauce-boss/sauceBoss-background-bottom-smHub.png"
+      }
+    },
+    {
+      "description": "Background Image for Help Screen on Landscape Hubs",
+      "when": "${@viewportProfile == @hubLandscapeSmall || @viewportProfile == @hubLandscapeMedium || @viewportProfile == @hubLandscapeLarge}",
+      "strings": {
+        "backgroundImg": "https://s3.amazonaws.com/ask-samples-resources/images/sauce-boss/sauceBoss-background-bottom-Hub.png"
+      }
+    },
+    {
+      "description": "Background Image for Help Screen on XLarge Hubs (e.g TV)",
+      "when": "${@viewportProfile == @tvLandscapeXLarge}",
+      "strings": {
+        "backgroundImg": "https://s3.amazonaws.com/ask-samples-resources/images/sauce-boss/sauceBoss-background-bottom-TV.png"
+      }
+    },
+    {
+      "description": "Skill Icon",
+      "strings": {
+        "skillIcon": "https://s3.amazonaws.com/ask-samples-resources/icons/sauce-boss-icon.png"
+      }
+    }
+  ],
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": [
+      {
+        "type": "AlexaTextList",
+        "theme": "${viewport.theme}",
+        "headerTitle": "${payload.sauceBossData.headerTitle}",
+        "headerSubtitle": "${payload.sauceBossData.headerSubtitle}",
+        "headerAttributionImage": "@skillIcon",
+        "headerDivider": true,
+        "headerBackButton": "${payload.sauceBossData.headerBackButton}",
+        "backgroundImageSource": "@backgroundImg",
+        "backgroundScale": "best-fill",
+        "backgroundAlign": "center",
+        "hideOrdinal": true,
+        "primaryAction": {
+          "type": "SendEvent",
+          "arguments": [
+            "sauceInstructions",
+            "${data.id}"
+          ]
+        },
+        "listItems": "${payload.sauceBossData.items}"
+      }
+    ]
+  }
+}
