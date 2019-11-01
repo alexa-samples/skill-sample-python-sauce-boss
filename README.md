@@ -16,7 +16,7 @@ Welcome!  You too can be a "sauce boss" with the help of the sauce boss skill!  
 
 > Note: if you're using the ASK CLI, the fastest way to try this skill out is to issue these commands:
   ```javascript
-  ask new --url https://github.com/alexa/skill-sample-nodejs-sauce-boss.git --skill-name sauce-boss
+  ask new --url https://github.com/alexa/skill-sample-python-sauce-boss.git --skill-name sauce-boss
   cd sauce-boss
   ask deploy
   ```
