@@ -278,13 +278,13 @@ class LocalizationInterceptor(AbstractRequestInterceptor):
         with open("language_strings.json") as language_prompts:
             language_data = json.load(language_prompts)
         # set default translation data to broader translation
-        # data = language_data[locale[:2]]
+        data = language_data[locale[:2]]
         # if a more specialized translation exists, then select it instead
         # example: "fr-CA" will pick "fr" translations first, but if "fr-CA" translation exists,
         #          then pick that instead
-        # if locale in language_data:
-        #     data = language_data[locale]
-        data = language_data[locale[:2]]
+        if locale in language_data:
+            data = language_data[locale]
+        # data = language_data[locale[:2]]
         handler_input.attributes_manager.request_attributes["_"] = data
 
 
