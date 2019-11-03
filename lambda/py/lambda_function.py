@@ -283,8 +283,7 @@ class LocalizationInterceptor(AbstractRequestInterceptor):
         # example: "fr-CA" will pick "fr" translations first, but if "fr-CA" translation exists,
         #          then pick that instead
         if locale in language_data:
-            data = language_data[locale]
-        # data = language_data[locale[:2]]
+            data.update(language_data[locale])
         handler_input.attributes_manager.request_attributes["_"] = data
 
 
