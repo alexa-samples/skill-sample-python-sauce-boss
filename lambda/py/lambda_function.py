@@ -8,7 +8,9 @@
 
 import logging
 import json
-import gettext
+import prompts
+import recipe_utils
+import apl_utils
 
 from ask_sdk_core.skill_builder import CustomSkillBuilder
 from ask_sdk_core.serialize import DefaultSerializer
@@ -19,10 +21,6 @@ from ask_sdk_core.dispatch_components import (
 from ask_sdk_core.utils import is_request_type, is_intent_name
 from ask_sdk_model.ui import StandardCard, Image
 from ask_sdk_model import Response
-
-from alexa import data
-import recipe_utils
-import apl_utils
 
 sb = CustomSkillBuilder()
 
@@ -40,13 +38,13 @@ class LaunchRequestIntentHandler(AbstractRequestHandler):
         return is_request_type("LaunchRequest")(handler_input)
 
     def handle(self, handler_input):
-        _ = handler_input.attributes_manager.request_attributes["_"]
+        data = handler_input.attributes_manager.request_attributes["_"]
         # Get a random sauce
         random_sauce = recipe_utils.get_random_recipe(handler_input)
         # Get prompt and reprompt speech
-        speak_output = _(data.WELCOME_MESSAGE).format(
-            _(data.SKILL_NAME), random_sauce['name'])
-        reprompt_output = _(data.WELCOME_REPROMPT)
+        speak_output = data[prompts.WELCOME_MESSAGE].format(
+            data[prompts.SKILL_NAME], random_sauce['name'])
+        reprompt_output = data[prompts.WELCOME_REPROMPT]
         # Add APL Template if device is compatible
         apl_utils.launch_screen(handler_input)
         # Generate JSON Response
@@ -72,7 +70,7 @@ class RecipeIntentHandler(AbstractRequestHandler):
         return self.generate_recipe_output(handler_input, sauce_item)
 
     def generate_recipe_output(self, handler_input, sauce_item):
-        _ = handler_input.attributes_manager.request_attributes["_"]
+        data = handler_input.attributes_manager.request_attributes["_"]
         locale = handler_input.request_envelope.request.locale
         # Sauce exists
         if(sauce_item['id']):
@@ -80,13 +78,11 @@ class RecipeIntentHandler(AbstractRequestHandler):
             recipes = recipe_utils.get_locale_specific_recipes(locale)
             selected_recipe = recipes[sauce_item['id']]
             # Add image
-            sauce_item['image'] = recipe_utils.get_sauce_image(sauce_item['id'])
+            sauce_item['image'] = recipe_utils.get_sauce_image(
+                sauce_item['id'])
             # Add a card (displayed in the Alexa app)
-            cardTitle = _(data.DISPLAY_CARD_TITLE).format(
-                _(data.SKILL_NAME), selected_recipe['name'])
-            # Add speak output and reprompt
-            handler_input.response_builder.speak(
-                selected_recipe['instructions']).ask(_(data.RECIPE_REPEAT_MESSAGE))
+            cardTitle = data[prompts.DISPLAY_CARD_TITLE].format(
+                data[prompts.SKILL_NAME], selected_recipe['name'])
             handler_input.response_builder.set_card(
                 StandardCard(title=cardTitle, text=selected_recipe['instructions'], image=Image(
                     small_image_url=sauce_item['image'], large_image_url=sauce_item['image'])))
@@ -98,16 +94,16 @@ class RecipeIntentHandler(AbstractRequestHandler):
             if(sauce_item['spoken']):
                 # Use spoken value to let user know no recipe exists for this value
                 handler_input.response_builder.speak(
-                    _(data.RECIPE_NOT_FOUND_WITH_ITEM_NAME).format(sauce_item['spoken']))
+                    data[prompts.RECIPE_NOT_FOUND_WITH_ITEM_NAME].format(sauce_item['spoken']))
             else:
                 # No spoken value
                 handler_input.response_builder.speak(
-                    _(data.RECIPE_NOT_FOUND_WITHOUT_ITEM_NAME)
+                    data[prompts.RECIPE_NOT_FOUND_WITHOUT_ITEM_NAME]
                 )
 
         # add reprompt
         handler_input.response_builder.ask(
-            _(data.RECIPE_NOT_FOUND_REPROMPT)
+            data[prompts.RECIPE_NOT_FOUND_REPROMPT]
         )
 
         # Generate JSON response
@@ -177,12 +173,12 @@ class HelpIntentHandler(AbstractRequestHandler):
         return is_intent_name("AMAZON.HelpIntent")(handler_input)
 
     def handle(self, handler_input):
-        _ = handler_input.attributes_manager.request_attributes["_"]
+        data = handler_input.attributes_manager.request_attributes["_"]
         # Get random sauce for speak_output
         random_sauce = recipe_utils.get_random_recipe(handler_input)
         # get prompt and reprompt speach
-        speak_ouput = _(data.HELP_MESSAGE).format(random_sauce['name'])
-        reprompt_output = _(data.HELP_REPROMPT).format(random_sauce['name'])
+        speak_ouput = data[prompts.HELP_MESSAGE].format(random_sauce['name'])
+        reprompt_output = data[data.HELP_REPROMPT].format(random_sauce['name'])
         # Add APL if device is compatible
         apl_utils.helpScreen(handler_input)
         handler_input.response_builder.speak(
@@ -221,7 +217,8 @@ class ExitIntentHandler(AbstractRequestHandler):
             and is_intent_name("AMAZON.StopIntent")(handler_input)
 
     def handle(self, handler_input):
-        speak_output = data.STOP_MESSAGE
+        data = handler_input.attributes_manager.request_attributes["_"]
+        speak_output = data[prompts.STOP_MESSAGE]
         handler_input.response_builder.speak(speak_output)
         # Generate JSON response
         return handler_input.response_builder.response
@@ -253,7 +250,8 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
 
     def handle(self, handler_input, exception):
         logger.error(exception, exc_info=True)
-        speak_output = "should be handling error messages"
+        data = handler_input.attributes_manager.request_attributes["_"]
+        speak_output = data[prompts.ERROR_MESSAGE]
         handler_input.response_builder.speak(speak_output).ask(speak_output)
         return handler_input.response_builder.response
 
@@ -269,14 +267,24 @@ class RequestLogger(AbstractRequestInterceptor):
 
 class LocalizationInterceptor(AbstractRequestInterceptor):
     """
-    Add function to request attributes, that can load locale specific data
+    Add function to request attributes, that can load locale specific data.
     """
 
     def process(self, handler_input):
         locale = handler_input.request_envelope.request.locale
-        i18n = gettext.translation(
-            'data', localedir='locales', languages=[locale], fallback=True)
-        handler_input.attributes_manager.request_attributes["_"] = i18n.gettext
+        logger.info("Locale is {}".format(locale[:2]))
+
+        # localized strings stored in language_strings.json
+        with open("language_strings.json") as language_prompts:
+            language_data = json.load(language_prompts)
+        # set default translation data to broader translation
+        data = language_data[locale[:2]]
+        # if a more specialized translation exists, then select it instead
+        # example: "fr-CA" will pick "fr" translations first, but if "fr-CA" translation exists,
+        #          then pick that instead
+        if locale in language_data:
+            data.update(language_data[locale])
+        handler_input.attributes_manager.request_attributes["_"] = data
 
 
 class ResponseActionnableHistoryInterceptor(AbstractResponseInterceptor):
@@ -342,7 +350,8 @@ class CacheResponseForRepeatInterceptor(AbstractResponseInterceptor):
     def process(self, handler_input, response):
         # type: (HandlerInput, Response) -> None
         session_attr = handler_input.attributes_manager.session_attributes
-        session_attr["recent_response"] = response
+        session_attr["speech"] = response.output_speech
+        session_attr["reprompt"] = response.reprompt
 
 
 class ResponseLogger(AbstractResponseInterceptor):
@@ -366,8 +375,8 @@ sb.add_request_handler(SessionEndedRequestHandler())
 sb.add_exception_handler(CatchAllExceptionHandler())
 
 # register response interceptors
-sb.add_global_request_interceptor(RequestLogger())
 sb.add_global_request_interceptor(LocalizationInterceptor())
+sb.add_global_request_interceptor(RequestLogger())
 sb.add_global_response_interceptor(CacheResponseForRepeatInterceptor())
 sb.add_global_response_interceptor(ResponseLogger())
 sb.add_global_response_interceptor(ResponseActionnableHistoryInterceptor())

@@ -251,11 +251,111 @@ ja = {
     }
 }
 
+# Portuguese
+
+pt = {
+    'HON': {
+        'name': "Mostarda e Mel",
+        'instructions': "Para fazer molho de mostarda e mel, misture maionese, mustarda amarela, mustarda Dijon, mel, e suco de limão em uma tigela. Cubra e deixe pernoitar na geladeira."
+    },
+    'BBQ': {
+        'name': "BBQ",
+        'instructions': "Para fazer molho BBQ, misture açúcar mascavo, ketchup, vinagre e molho Worcestershire em um liquidificador. Tempere com sal, pimenta em pó e pimenta caiena. Bater no liquidificador até obter uma mistura homogênea."
+    },
+    'RAN': {
+        'name': "Ranch",
+        'instructions': "Para molho ranch, misture maionese, creme de leite, cebolinha, salsa, endro, alho em pó, vebola em pó, sal e pimenta em uma tigela grande. Cubra e leve à geladeira pelo menos 30 minutos antes de servir."
+    },
+    'CAE': {
+        'name': "Caesar",
+        'instructions': "Para o molho César, combine suco de limão, vinagre, água, queijo parmesão ralado, mostarda Dijon, alho em pó e pimenta em uma jarra. Feche com uma tampa e agite bem. Leve à geladeira até a hora de usar."
+    },
+    'WOR': {
+        'name': "Worcestershire",
+        'instructions': "Para fazer molho Worcestershire, combine vinagre de maçã, água, molho de soja, açúcar mascavo, mostarda em pó, cebola em pó, alho em pó, canela moída e uma pitada de pimenta do reino em uma panela. Deixe ferver e cozinhe até ficar perfumado, cerca de 45 segundos, e deixe esfriar até a temperatura ambiente."
+    },
+    'THO': {
+        'name': "Thousand Island",
+        'instructions': "Para o molho Thousand Island, combine maionese, ketchup, relish de pepino, sal e pimenta e uma tigela pequena até obter uma mistura homogênea. Resfrie e sirva."
+    },
+    'PES': {
+        'name': "Pesto",
+        'instructions': "Para fazer pesto, combine manjericão, alho, queijo parmesão, azeite de oliva e pinhões em um liquidificador. Bata até que a mistura fique homogênea. Adicione salsinha a gosto."
+    },
+    'TAR': {
+        'name': "Tártaro",
+        'instructions': "A receita do molho tártaro consiste em misturar maionese, cebola picada, relish de pepino sal e pimenta em uma tigela média. Misture bem e deixe descansar por pelo menos 10 minutos antes de servir."
+    },
+    'PIZ': {
+        'name': "Pizza",
+        'instructions': "Para fazer molho de pizza, misture molho de tomate e pasta de tomate em uma tigela média até obter uma mistura homogênea. Misture orégano, alho picado seco e colorau."
+    },
+    'CRA': {
+        'name': "Cranberry",
+        'instructions': "Para o molho de cranberry, dissolva açúcar em suco de laranja em uma panela em fogo médio. Misture os cranberries e cozinhe até começarem a estalar. Retire do fogo e transfira o molho para uma tigela antes de servir."
+    },
+    'SEC': {
+        'name': "Secreto",
+        'instructions': "Vocé é muito doce, mas não se preocupe. A receita secreta está bem segura comigo."
+    }
+}
+
+# Deutsche
+
+de = {
+    'HON': {
+        'name': "Honig Senf",
+        'instructions': "Für eine Honig-Senf-Sauce benötigst Du Mayonaise, scharfen Senf, süßen Senf, und etwas Zitronensaft. Verrühr alles in einer Schüssel, und lass es über Nacht im Kühlschrank ziehen."
+    },
+    'BBQ': {
+        'name': 'BBQ',
+        'instructions': "Für eine Barbecue-Sauce benötigst Du braunen Zucker, Ketchup, Essig, Woucestersauce, Salz, Pfeffer und Cayenne-Pfeffer. Verrühr alle Zutaten mit einem Mixer, bis die Sauce eine gleichmäßige Konsistenz hat."
+    },
+    'RAN': {
+        'name': "Ranch",
+        'instructions': "Für ein Ranch-Dressing benötigst Du Mayonaise, Schmand, Schnittlauch, Petersilie, Dill, Knoblauchpulver, Zwiebelpulver, Salz und Pfeffer. Verrühr alles in einer großen Schüssel, und lass es vor dem Servieren 30 Minuten ziehen."
+    },
+    'CAE': {
+        'name': "Caesar",
+        'instructions': "Für eine Caesar-Sauce benötigst Du Zitronensaft, Essig, Wasser, geriebenen Parmesan, süßen Senf, Knoblauchpulver und Pfeffer. Verrühr alle Zutaten in einem verschließbaren Schüssel, schüttel es gut durch, und stell es vor dem Servieren kühl."
+    },
+    'WOR': {
+        'name': "Worcestershire",
+        'instructions': "Für eine Worcestershire-Sauce benötigst Du Apfelessig, Wasser, Sojasauce, baunen Zucker, Senfpulver, Zwiebelpulver, Knoblauchpulver, gemahlenen Zimt, und eine Prise Pfeffer. Vermenge alles in einer Pfanne, bring es für etwa 45 Sekunden zum Kochen, und dann lass es abkühlen."
+    },
+    'THO': {
+        'name': "Thousand Island",
+        'instructions': "Für ein Thousand-Island-Dressing benötigst Du Mayonaise, Ketchup, Gewürzgurken, süßen Relish, Salz und Pfeffer. Vermische alles in einer kleinen Schüssel, und serviere es gekühlt."
+    },
+    'PES': {
+        'name': "Pesto",
+        'instructions': "Für eine Pesto-Sauce benötigst Du Basilikum, Knoblauch, Parmesan, Olivenöl und Pinienkerne. Zerkleinere alles in einem Mixer zu einer gleichmäßigen Masse, und gib nach Bedarf Petersilie dazu."
+    },
+    'TAR': {
+        'name': "Tartar",
+        'instructions': "Für eine Tartar-Sauce benötigst Du Mayonaise, Zwiebelwürfel, süßen Relish, Pfeffer und Salz. Vermische alles in einer mittelgroßen Schüssel, und lass es vor dem Servieren für 30 Minuten ziehen. "
+    },
+    'PIZ': {
+        'name': "Pizza",
+        'instructions': "Für eine Pizza-Sauce benötigst Du Tomatensauce, Tomatenmark, Oregano, Knoblauchwürfel und Paprika. Vermische alles in einer mittelgroßen Schüssel zu einer gleichmäßigen Masse. "
+    },
+    'CRA': {
+        'name': "Cranberry",
+        'instructions': "Für eine Cranberry-Sauce benötigst Du Zucker, Orangensaft und Cranberries. Löse zunächst den Zucker im Orangensaft in einer Pfanne auf mittlerer Hitze auf. Gib dann die Cranberries dazu und koche sie, bis sie sich öffnen. Nimm die Sauce vom Herd und serviere sie abgekühlt in einer Schüssel. "
+    },
+    'SEC': {
+        'name': "Secret",
+        'instructions': "Das Rezept für die geheime Sauce ist bei mir sicher. Du brauchst gar nicht weiter versuchen, es aus mir raus zu quetschen!"
+    }
+}
+
 
 translations = {
     'en': en,
     'fr': fr,
     'es': es,
     'hi': hi,
-    'ja': ja
+    'ja': ja,
+    'pt': pt,
+    'de': de
 }
