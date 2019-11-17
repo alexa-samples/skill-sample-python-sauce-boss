@@ -1,7 +1,7 @@
-# Build An Alexa Fact Skill
+# Build an Alexa Sauce Recipe Skill using Alexa Presentation Language
 <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
 
-Build an engaging facts skill about any topic. Alexa will select a fact at random and share it with the user when the skill is invoked.
+This sample skill use a how-to or recipe use case to demonstrate the Alexa Presentation Language (APL). Ask for a sauce and you'll be provided with an image and recipe description for the sauce of your choice.
 
 ## Deploying Skill Code
 

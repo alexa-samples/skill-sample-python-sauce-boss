@@ -1,7 +1,7 @@
-# Build An Alexa-Hosted Fact Skill
+# Build an Alexa Sauce Recipe Skill using Alexa Presentation Language
 <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
 
-This skill gets you started with skill building by providing basic "Hello World" functionality that allows you to rapidly generate a voice response from Alexa.
+This sample skill use a how-to or recipe use case to demonstrate the Alexa Presentation Language (APL). Ask for a sauce and you'll be provided with an image and recipe description for the sauce of your choice.
 
 ## Setting up Your Alexa Skill in the Developer Console (Alexa Hosted)
 
