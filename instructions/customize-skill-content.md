@@ -40,7 +40,7 @@ At this point, you should have a working copy of our Fact skill.  In order to ma
     ```
     Each of these objects corresponds to the background image that gets rendered on the device depending on the device's resolution. Make sure your replacement images match the resolutions of those above.
 
-    If I had my custom background images hosted at `https://my.custom.url/images/new_background_image_small`, `https://my.custom.url/images/new_background_image_medium`, and `https://my.custom.url/images/new_background_image_large`, then my `resources` property would now look like:
+    If I had my custom background images hosted at `https://my.custom.url/images/new_background_image_small.png`, `https://my.custom.url/images/new_background_image_medium.png`, and `https://my.custom.url/images/new_background_image_large.png`, then my `resources` property would now look like:
     
     ```js
     "resources": [
@@ -48,21 +48,21 @@ At this point, you should have a working copy of our Fact skill.  In order to ma
             "description": "Background Image for Help Screen on Small Round Hubs",
             "when": "${@viewportProfile == @hubRoundSmall}",
             "strings": {
-                "backgroundImg": "https://my.custom.url/images/new_background_image_small"
+                "backgroundImg": "https://my.custom.url/images/new_background_image_small.png"
             }
         },
         {
             "description": "Background Image for Help Screen on Landscape Hubs",
             "when": "${@viewportProfile == @hubLandscapeSmall || @viewportProfile == @hubLandscapeMedium || @viewportProfile == @hubLandscapeLarge}",
             "strings": {
-                "backgroundImg": "https://my.custom.url/images/new_background_image_medium"
+                "backgroundImg": "https://my.custom.url/images/new_background_image_medium.png"
             }
         },
         {
             "description": "Background Image for Help Screen on XLarge Hubs (e.g TV)",
             "when": "${@viewportProfile == @tvLandscapeXLarge}",
             "strings": {
-                "backgroundImg": "https://my.custom.url/images/new_background_image_large"
+                "backgroundImg": "https://my.custom.url/images/new_background_image_large.png"
             }
         },
         ...,
