@@ -176,7 +176,8 @@
 		"apis": {
 			"custom": {
 				"endpoint": {
-					"uri": "arn:aws:lambda:us-east-1:910734725388:function:cc10d8b4-d001-4a34-b9fa-a1c1b41357ca:Release_0"
+					"uri": "arn:aws:lambda:us-east-1:910734725388:function:cc10d8b4-d001-4a34-b9fa-a1c1b41357ca:Release_0",
+					"sourceDir": "lambda/py"
 				},
 				"interfaces": [
 					{
