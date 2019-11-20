@@ -53,21 +53,21 @@ At this point, you should have a working copy of our Sauce Boss skill.  In order
             "description": "Background Image for Help Screen on Small Round Hubs",
             "when": "${@viewportProfile == @hubRoundSmall}",
             "strings": {
-                "backgroundImg": "https://my.custom.url/images/new_background_image_small.png"
+                "backgroundImg": "https://my.custom.url/images/new_background_image_small.png" <-- CHANGED
             }
         },
         {
             "description": "Background Image for Help Screen on Landscape Hubs",
             "when": "${@viewportProfile == @hubLandscapeSmall || @viewportProfile == @hubLandscapeMedium || @viewportProfile == @hubLandscapeLarge}",
             "strings": {
-                "backgroundImg": "https://my.custom.url/images/new_background_image_medium.png"
+                "backgroundImg": "https://my.custom.url/images/new_background_image_medium.png" <-- CHANGED
             }
         },
         {
             "description": "Background Image for Help Screen on XLarge Hubs (e.g TV)",
             "when": "${@viewportProfile == @tvLandscapeXLarge}",
             "strings": {
-                "backgroundImg": "https://my.custom.url/images/new_background_image_large.png"
+                "backgroundImg": "https://my.custom.url/images/new_background_image_large.png" <-- CHANGED
             }
         },
         ...,
