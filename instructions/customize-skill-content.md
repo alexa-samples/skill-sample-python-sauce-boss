@@ -83,11 +83,11 @@ At this point, you should have a working copy of our Sauce Boss skill.  In order
 
     1. Navigate to the **Code** tab again, and expand the project folder on the left to `Skill Code/lambda`.
 
-    1. Open **[language_strings.json](../lambda/py/language_strings.json).**
+    2. Open **[language_strings.json](../lambda/py/language_strings.json).**
 
-    2.  **Look for the a specific locale such as `en`** This is the beginning of the section where you need to customize several text strings for your skill.
+    3.  **Look for the a specific locale such as `en`** This is the beginning of the section where you need to customize several text strings for your skill.
 
-    3.  For each prompt, such as `RECIPE_NOT_FOUND_REPROMPT`, replace the string contents with any sentence you would like Alexa to respond with instead. For example, the following changes will result in Alexa saying "Which sauce would you like to learn how to make?", instead of "Which sauce would you like to prepare?", when Alexa doesn't know which Sauce the user asked for.
+    4.  For each prompt, such as `RECIPE_NOT_FOUND_REPROMPT`, replace the string contents with any sentence you would like Alexa to respond with instead. For example, the following changes will result in Alexa saying "Which sauce would you like to learn how to make?", instead of "Which sauce would you like to prepare?", when Alexa doesn't know which Sauce the user asked for.
         
         Before:
         ```js
@@ -102,7 +102,7 @@ At this point, you should have a working copy of our Sauce Boss skill.  In order
         ```js
         "en": {
             ...,
-            'RECIPE_NOT_FOUND_REPROMPT': "Which sauce would you like to learn how to make?",
+            'RECIPE_NOT_FOUND_REPROMPT': "Which sauce would you like to learn how to make?", <-- CHANGED
             ...,
             ...
         }
