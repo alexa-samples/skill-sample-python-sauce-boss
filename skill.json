@@ -176,7 +176,7 @@
 		"apis": {
 			"custom": {
 				"endpoint": {
-					"sourceDir": "lambda/custom",
+					"sourceDir": "lambda/py/lambda_upload",
 					"uri": "ask-sauce-boss"
 				},
 				"interfaces": [
