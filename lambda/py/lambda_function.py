@@ -214,7 +214,7 @@ class ExitIntentHandler(AbstractRequestHandler):
 
     def can_handle(self, handler_input):
         return is_intent_name("AMAZON.CancelIntent")(handler_input) \
-            and is_intent_name("AMAZON.StopIntent")(handler_input)
+            or is_intent_name("AMAZON.StopIntent")(handler_input)
 
     def handle(self, handler_input):
         data = handler_input.attributes_manager.request_attributes["_"]
