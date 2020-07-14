@@ -177,12 +177,12 @@ class HelpIntentHandler(AbstractRequestHandler):
         # Get random sauce for speak_output
         random_sauce = recipe_utils.get_random_recipe(handler_input)
         # get prompt and reprompt speach
-        speak_ouput = data[prompts.HELP_MESSAGE].format(random_sauce['name'])
+        speak_output = data[prompts.HELP_MESSAGE].format(random_sauce['name'])
         reprompt_output = data[prompts.HELP_REPROMPT].format(random_sauce['name'])
         # Add APL if device is compatible
         apl_utils.helpScreen(handler_input)
         handler_input.response_builder.speak(
-            speak_ouput
+            speak_output
         ).ask(reprompt_output)
         # Generate the JSON response
         return handler_input.response_builder.response
@@ -197,8 +197,13 @@ class RepeatIntentHandler(AbstractRequestHandler):
         return is_intent_name("AMAZON.RepeatIntent")(handler_input)
 
     def handle(self, handler_input):
-        return PreviousHandler().handle(handler_input)
-
+        session_attr = handler_input.attributes_manager.session_attributes
+        logger.info("Session Attr: {}".format(session_attr))
+        # get the last response stored in session_attributes and return it
+        cached_response_str = json.dumps(session_attr["speech"])
+        cached_response = DefaultSerializer().deserialize(
+            cached_response_str, Response)
+        return cached_response
 
 class ExitIntentHandler(AbstractRequestHandler):
     """
