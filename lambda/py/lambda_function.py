@@ -178,7 +178,7 @@ class HelpIntentHandler(AbstractRequestHandler):
         random_sauce = recipe_utils.get_random_recipe(handler_input)
         # get prompt and reprompt speach
         speak_ouput = data[prompts.HELP_MESSAGE].format(random_sauce['name'])
-        reprompt_output = data[data.HELP_REPROMPT].format(random_sauce['name'])
+        reprompt_output = data[prompts.HELP_REPROMPT].format(random_sauce['name'])
         # Add APL if device is compatible
         apl_utils.helpScreen(handler_input)
         handler_input.response_builder.speak(
