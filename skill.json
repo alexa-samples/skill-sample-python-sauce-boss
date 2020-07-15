@@ -176,8 +176,8 @@
 		"apis": {
 			"custom": {
 				"endpoint": {
-					"sourceDir": "lambda/custom",
-					"uri": "ask-sauce-boss"
+					"uri": "",
+					"sourceDir": "lambda/py"
 				},
 				"interfaces": [
 					{

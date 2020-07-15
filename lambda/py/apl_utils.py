@@ -70,8 +70,8 @@ def recipeScreen(handler_input, sauce_item, selected_recipe):
     """
     data = handler_input.attributes_manager.request_attributes["_"]
     # Get prompt and reprompt speech
-    speak_output = selected_recipe['instructions']
     reprompt_output = data[prompts.RECIPE_REPEAT_MESSAGE]
+    speak_output = selected_recipe['instructions'] + " " + data[prompts.RECIPE_NOT_FOUND_REPROMPT]
     # Only add APL directive if User's device supports APL
     if(supports_apl(handler_input)):
         # Add APL Template amd Command (Speak Item to sync. Voice/Text)
